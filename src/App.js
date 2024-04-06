@@ -1,25 +1,56 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Route, Routes, Link, useNavigate } from 'react-router-dom';
+import Home from './home';
+import About from './About';
+import Contact from './Contact';
+import './App.css'
 
-function App() {
+const App = () => {
+  const [currentPage, setCurrentPage] = useState('home');
+
+  const handleLinkClick = (page) => {
+    setCurrentPage(page);
+  };
+
+  let pageComponent;
+  switch (currentPage) {
+    case '/home':
+      pageComponent = <Home />;
+      break;
+    case '/about':
+      pageComponent = <About />;
+      break;
+    case '/contact':
+      pageComponent = <Contact />;
+      break;
+    default:
+      pageComponent = <Home />;
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div>
+        <nav className='flex flex-row justify-between items-center'>
+        <div >
+          <h2 className='text-white font-inter font-bold text-4xl ml-20 mt-8 z-10 relative'>DRP.</h2>
+        </div>
+          <ul className='nav flex list-none gap-4 flex-row justify-end text-white mr-32 mt-8 z-10 relative'>
+            <li className='no-underline text-white font-inter font-medium text-base uppercase'>
+              <Link to="/home" onClick={() => handleLinkClick('/home')}>Home</Link>
+            </li>
+            <li className='no-underline text-white font-inter font-medium text-base uppercase'>
+              <Link to="/about" onClick={() => handleLinkClick('/about')}>About</Link>
+            </li>
+            <li className='no-underline text-white font-inter font-medium text-base uppercase'>
+              <Link to="/contact" onClick={() => handleLinkClick('/contact')}>Contact</Link>
+            </li>
+          </ul>
+        </nav>
+        {pageComponent}
+      </div>
+    </Router>
   );
-}
+};
 
 export default App;
+
