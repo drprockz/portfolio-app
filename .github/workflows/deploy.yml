@@ -26,7 +26,6 @@ jobs:
 
       - name: Debug
         run: |
-          ls -la $GITHUB_WORKSPACE
           ls -la $GITHUB_WORKSPACE/build
 
       - name: Deploy to VPS
@@ -38,4 +37,4 @@ jobs:
           script: |
             cd htdocs/darshanparmar.simpleinc.in/
             rm -rf *
-            rsync -avz --delete $GITHUB_WORKSPACE/build/ .
+            cp -r $GITHUB_WORKSPACE/build/* .
