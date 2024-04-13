@@ -24,6 +24,11 @@ jobs:
       - name: Build React app
         run: npm run build
 
+      - name: Debug
+        run: |
+          ls -la $GITHUB_WORKSPACE
+          ls -la $GITHUB_WORKSPACE/build
+
       - name: Deploy to VPS
         uses: appleboy/ssh-action@master
         with:
