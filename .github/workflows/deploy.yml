@@ -30,4 +30,4 @@ jobs:
             rm -rf *
             echo pwd
             scp -r $GITHUB_WORKSPACE/build/* .
-            #asdad
+    
