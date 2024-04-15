@@ -26,4 +26,6 @@ jobs:
         username: ${{ secrets.SSH_USERNAME }}
         password: ${{ secrets.SSH_PASSWORD }}
         script: |
-          rsync -r --delete-after --quiet $GITHUB_WORKSPACE/build/ /home/simpleinc-darshanparmar/htdocs/darshanparmar.simpleinc.in
+          ssh ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} "rm -rf /home/simpleinc-darshanparmar/htdocs/darshanparmar.simpleinc.in/*"
+          rsync -r --delete-after --quiet $GITHUB_WORKSPACE/build/ /home/simpleinc-darshanparmar/htdocs/darshanparmar.simpleinc.in/
+
