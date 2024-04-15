@@ -1,4 +1,4 @@
-name: Deploy to VPS
+name: Deploy to CloudPanel VPS
 
 on:
   push:
@@ -6,39 +6,24 @@ on:
       - master
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+    - name: Checkout code
+      uses: actions/checkout@v2
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '20'
+    - name: Install dependencies
+      run: npm install
 
-      - name: Install dependencies
-        run: npm install
+    - name: Build React app
+      run: npm run build
 
-      - name: Build React app
-        run: npm run build
-
-      - name: Permissions
-        run: chmod 777 $GITHUB_WORKSPACE/build
-
-      - name: Debug
-        run: |
-          ls -la $GITHUB_WORKSPACE
-          ls -la $GITHUB_WORKSPACE/build
-
-      - name: Deploy to VPS
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_USERNAME }}
-          password: ${{ secrets.SSH_PASSWORD }}
-          script: |
-            cd /home/simpleinc-darshanparmar/htdocs/darshanparmar.simpleinc.in/
-            rm -rf *
-            cp -r $GITHUB_WORKSPACE/build/ .
+    - name: Deploy to VPS
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.SSH_HOST }}
+        username: ${{ secrets.SSH_USERNAME }}
+        password: ${{ secrets.SSH_PASSWORD }}
+        script: |
+          rsync -r --delete-after --quiet $GITHUB_WORKSPACE/build/ /home/simpleinc-darshanparmar/htdocs/darshanparmar.simpleinc.in
