@@ -29,3 +29,4 @@ jobs:
             cd /home/simpleinc-darshanparmar/htdocs/darshanparmar.simpleinc.in
             rm -rf *
             scp -r $GITHUB_WORKSPACE/build/* .
+            #asdad
