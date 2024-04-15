@@ -1,4 +1,4 @@
- name: Deploy
+name: Deploy to VPS
 
 on:
   push:
@@ -13,11 +13,21 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '20'
+
       - name: Install dependencies
         run: npm install
 
-      - name: Build
+      - name: Build React app
         run: npm run build
+
+      - name: Debug
+        run: |
+          ls -la $GITHUB_WORKSPACE
+          ls -la $GITHUB_WORKSPACE/build
 
       - name: Deploy to VPS
         uses: appleboy/ssh-action@master
@@ -26,8 +36,6 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }}
           password: ${{ secrets.SSH_PASSWORD }}
           script: |
-            cd /home/simpleinc-darshanparmar/htdocs/darshanparmar.simpleinc.in
+            cd htdocs/darshanparmar.simpleinc.in/
             rm -rf *
-            echo pwd
-            scp -r $GITHUB_WORKSPACE/build/* .
-    
+            cp -r $GITHUB_WORKSPACE/build/. .
