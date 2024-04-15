@@ -29,6 +29,9 @@ jobs:
           ls -la $GITHUB_WORKSPACE
           ls -la $GITHUB_WORKSPACE/build
 
+      - name: Permissions
+        run: chmod 777 $GITHUB_WORKSPACE/build
+
       - name: Deploy to VPS
         uses: appleboy/ssh-action@master
         with:
@@ -38,4 +41,4 @@ jobs:
           script: |
             cd htdocs/darshanparmar.simpleinc.in/
             rm -rf *
-            cp -r "$GITHUB_WORKSPACE/build/*" .
+            cp -r $GITHUB_WORKSPACE/build/ .
