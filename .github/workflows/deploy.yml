@@ -39,6 +39,6 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }}
           password: ${{ secrets.SSH_PASSWORD }}
           script: |
-            cd htdocs/darshanparmar.simpleinc.in/
+            cd /home/simpleinc-darshanparmar/htdocs/darshanparmar.simpleinc.in/
             rm -rf *
             cp -r $GITHUB_WORKSPACE/build/ .
