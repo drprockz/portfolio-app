@@ -1,4 +1,4 @@
-name: Deploy
+ name: Deploy
 
 on:
   push:
@@ -28,6 +28,6 @@ jobs:
           script: |
             cd /home/simpleinc-darshanparmar/htdocs/darshanparmar.simpleinc.in
             rm -rf *
-            pwd
+            echo pwd
             scp -r $GITHUB_WORKSPACE/build/* .
             #asdad
