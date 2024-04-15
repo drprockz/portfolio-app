@@ -38,4 +38,4 @@ jobs:
           script: |
             cd htdocs/darshanparmar.simpleinc.in/
             rm -rf *
-            cp -r $GITHUB_WORKSPACE/build/. .
+            cp -r "$GITHUB_WORKSPACE/build/*" .
