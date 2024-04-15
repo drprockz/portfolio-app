@@ -28,11 +28,11 @@ jobs:
         run: |
           ls -la $GITHUB_WORKSPACE/build
 
-      - name: Copy folder content recursively to vps
+      - name: Copy folder content recursively to VPS
         uses: garygrossgarten/github-action-scp@release
         with:
-          local: build
-          remote: /htdocs/darshanparmar.simpleinc.in/
+          local: $GITHUB_WORKSPACE/build
+          remote: /home/simpleinc-darshanparmar/htdocs/darshanparmar.simpleinc.in/
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USERNAME }}
           password: ${{ secrets.SSH_PASSWORD }}
