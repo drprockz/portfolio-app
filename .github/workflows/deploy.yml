@@ -24,13 +24,13 @@ jobs:
       - name: Build React app
         run: npm run build
 
+      - name: Permissions
+        run: chmod 777 $GITHUB_WORKSPACE/build
+
       - name: Debug
         run: |
           ls -la $GITHUB_WORKSPACE
           ls -la $GITHUB_WORKSPACE/build
-
-      - name: Permissions
-        run: chmod 777 $GITHUB_WORKSPACE/build
 
       - name: Deploy to VPS
         uses: appleboy/ssh-action@master
