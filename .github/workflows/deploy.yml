@@ -25,13 +25,6 @@ jobs:
         run: npm run build
 
       - name: Deploy to VPS
-        uses: easingthemes/ssh-deploy@v2
-        with:
-          server_ip: ${{ secrets.SSH_HOST }}  # Add your VPS server's IP address or domain name as a secret
-          server_username: ${{ secrets.SSH_USERNAME }}  # Add your VPS server's username as a secret
-          server_ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}  # Add your VPS server's SSH private key as a secret
-          local_path: $GITHUB_WORKSPACE/build/  # Path to your React app's build directory
-          remote_path: /htdocs/darshanparmar.simpleinc.in/  # Path on your VPS server where the app should be deployed
-          REMOTE_PORT: 22  # Port for SSH connection, adjust if needed
-          TARGET: /home/simpleinc-darshanparmar/  # Adjust the target directory on the remote server
-          ARGS: -rltgoDzvO
+        run: |
+          ssh -o StrictHostKeyChecking=no -i ${{ secrets.SSH_PRIVATE_KEY }} ${{ secrets.SSH_USERNAME }}@${{ secrets.SERVER_IP }} 'mkdir -p /home/simpleinc-darshanparmar/htdocs/darshanparmar.simpleinc.in'
+          scp -o StrictHostKeyChecking=no -r $GITHUB_WORKSPACE/build/* ${{ secrets.SSH_USERNAME }}@${{ secrets.SERVER_IP }}:/home/simpleinc-darshanparmar/htdocs/darshanparmar.simpleinc.in/
