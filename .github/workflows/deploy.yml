@@ -26,5 +26,5 @@ jobs:
 
       - name: Deploy to VPS
         run: |
-          ssh -o StrictHostKeyChecking=no -i ${{ secrets.SSH_PRIVATE_KEY }} ${{ secrets.SSH_USERNAME }}@${{ secrets.SERVER_IP }} 'mkdir -p /home/simpleinc-darshanparmar/htdocs/darshanparmar.simpleinc.in'
-          scp -o StrictHostKeyChecking=no -r $GITHUB_WORKSPACE/build/* ${{ secrets.SSH_USERNAME }}@${{ secrets.SERVER_IP }}:/home/simpleinc-darshanparmar/htdocs/darshanparmar.simpleinc.in/
+          ssh -o StrictHostKeyChecking=no -i ${{ secrets.SSH_PRIVATE_KEY }} ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} 'mkdir -p /home/simpleinc-darshanparmar/htdocs/darshanparmar.simpleinc.in'
+          scp -o StrictHostKeyChecking=no -r $GITHUB_WORKSPACE/build/* ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }}:/home/simpleinc-darshanparmar/htdocs/darshanparmar.simpleinc.in/
