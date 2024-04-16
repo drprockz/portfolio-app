@@ -24,8 +24,10 @@ jobs:
       - name: Build React App
         run: npm run build
 
+      - name: Check SSH Connection and Remote Path
+        run: |
+          ssh -o StrictHostKeyChecking=no -i ${{ secrets.SSH_PRIVATE_KEY }} ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} 'if [ ! -d /home/simpleinc-darshanparmar/htdocs/darshanparmar.simpleinc.in ]; then echo "Remote path does not exist"; exit 1; fi'
+
       - name: Deploy to VPS
         run: |
-          ssh-keyscan -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
-          ssh -i ${{ secrets.SSH_PRIVATE_KEY }} ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} 'mkdir -p /htdocs/darshanparmar.simpleinc.in'
-          scp -r -i ${{ secrets.SSH_PRIVATE_KEY }} -o StrictHostKeyChecking=no $GITHUB_WORKSPACE/build/* ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }}:/htdocs/darshanparmar.simpleinc.in/
+          scp -r -i ${{ secrets.SSH_PRIVATE_KEY }} -o StrictHostKeyChecking=no $GITHUB_WORKSPACE/build/* ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }}:/home/simpleinc-darshanparmar/htdocs/darshanparmar.simpleinc.in/
