@@ -3,7 +3,7 @@ name: Deploy React App
 on:
   push:
     branches:
-      - master  # Change this to your main branch name if different
+      - master  # Change to your main branch if different
 
 jobs:
   deploy:
@@ -31,6 +31,7 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
+            # Remove everything in the target folder to ensure a clean slate
             rm -rf /home/simpleinc-darshanparmar/htdocs/darshanparmar.simpleinc.in/*
 
       - name: Deploy to VPS
@@ -39,5 +40,8 @@ jobs:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          source: "build/*"  # Upload only the contents of build/
-          target: "/home/simpleinc-darshanparmar/htdocs/darshanparmar.simpleinc.in/"
+
+          # Upload "build" directory but strip out the top-level "build" folder
+          source: 'build'
+          target: '/home/simpleinc-darshanparmar/htdocs/darshanparmar.simpleinc.in/'
+          strip_components: 1
