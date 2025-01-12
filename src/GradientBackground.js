@@ -2,12 +2,11 @@ import React from "react";
 
 const GradientBackground = () => {
   return (
-    <div className="relative h-screen">
-      {/* Curved Gradient Lines */}
+    <div className="">
       <div className="absolute inset-0">
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 1200 600"
+          viewBox="0 0 1200 593"
           className="w-full h-full"
         >
           <defs>
@@ -16,26 +15,57 @@ const GradientBackground = () => {
               <stop offset="100%" stopColor="#8000ff" />
             </linearGradient>
           </defs>
+
+          {/* 1st wave */}
           <path
-            d="M 0 300 Q 200 250, 400 300 T 800 300 T 1200 300"
+            d="
+              M 0 10
+              C 300 0, 900 600, 1200 500
+            "
             stroke="url(#gradient)"
             strokeWidth="3"
             fill="none"
           />
+
+          {/* 2nd wave */}
           <path
-            d="M 0 320 Q 200 270, 400 320 T 800 320 T 1200 320"
+            d="
+              M 0 30
+              C 300 20, 900 620, 1200 520
+            "
             stroke="url(#gradient)"
             strokeWidth="3"
             fill="none"
           />
+
+          {/* 3rd wave */}
           <path
-            d="M 0 340 Q 200 290, 400 340 T 800 340 T 1200 340"
+            d="
+              M 0 50
+              C 300 40, 900 640, 1200 540
+            "
             stroke="url(#gradient)"
             strokeWidth="3"
             fill="none"
           />
+
+          {/* 4th wave */}
           <path
-            d="M 0 360 Q 200 310, 400 360 T 800 360 T 1200 360"
+            d="
+              M 0 70
+              C 300 60, 900 660, 1200 560
+            "
+            stroke="url(#gradient)"
+            strokeWidth="3"
+            fill="none"
+          />
+
+          {/* 5th wave */}
+          <path
+            d="
+              M 0 90
+              C 300 80, 900 680, 1200 580
+            "
             stroke="url(#gradient)"
             strokeWidth="3"
             fill="none"
