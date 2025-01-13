@@ -91,7 +91,7 @@ const Home = () => {
 
             <ProjectCard
               title='Fatch'
-              image={p1} date='Jan - Mar 2023'
+              image={p2} date='Jan - Mar 2023'
               description='Elevate smartwatch game with custom-designed smartwatch faces.'
               role='Frontend Developer'
             />
