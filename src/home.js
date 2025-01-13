@@ -2,6 +2,10 @@
 import React from 'react';
 import './Home.css';
 import GradientBackground from './GradientBackground';
+import Card from './components/common/card';
+import ProjectCard from './components/ProjectCard';
+import p1 from './assets/images/projects/p1.svg';
+import p2 from './assets/images/projects/p2.svg';
 
 const Home = () => {
   return (
@@ -32,11 +36,11 @@ const Home = () => {
         <GradientBackground />
 
         {/* Content container on top of the waves */}
-        <div className="relative z-10 flex flex-row items-start justify-center h-full px-8 py-12 pt-60 lg:px-16">
+        <div className="relative z-10 flex flex-row h-full container mx-auto pt-60">
           <h1 className="w-[30%] leading-[70px] mb-4 font-medium text-white text-[64px] font-inter">
             Bring Ideas to Life Through Design
           </h1>
-          <p className="max-w-2xl mb-8 text-lg text-white lg:text-xl">
+          <p className="max-w-lg mb-8 ml-80 leading-8 text-[1.25rem] text-[#CECECE] font-inter font-normal">
             I&apos;m a UI Designer with 8 years of experience creating engaging
             interfaces for web and mobile applications. I prioritize user
             experience and am committed to staying up-to-date with the latest
@@ -45,29 +49,56 @@ const Home = () => {
             goals of the client. Let&apos;s create something great together!
           </p>
 
-          {/* Example "Highlighted Skills" section */}
-          {/* <div className="flex flex-wrap gap-4">
-            <span className="px-4 py-2 text-white bg-gray-800 rounded">
-              Wireframing
-            </span>
-            <span className="px-4 py-2 text-white bg-gray-800 rounded">
-              High Fidelity Design
-            </span>
-            <span className="px-4 py-2 text-white bg-gray-800 rounded">
-              Prototyping
-            </span>
-            <span className="px-4 py-2 text-white bg-gray-800 rounded">
-              Atomic Design
-            </span>
-          </div> */}
+
+        </div>
+        <div className="relative z-10 flex flex-col h-full container mx-auto pt-60">
+          <p className='font-inter font-normal text-[40px] text-white -tracking-[5%]'>Highlighted Skills</p>
+          <div className='flex flex-row gap-4 mt-4'>
+            <Card text='Wireframing' />
+            <Card text='High Fidelity Design' />
+            <Card text='Prototyping' />
+            <Card text='Atomic Design' />
+          </div>
         </div>
       </section>
 
-      {/* <section className="flex flex-col justify-center items-center h-[100vh]">
-        <div className='w-full'>
-          <GradientBackground />
+      <section className="flex flex-col h-auto pt-60">
+        <div className='w-full h-[45vh] flex flex-col bg-bg-pattern bg-cover bg-no-repeat bg-center'>
+          <div className='container mx-auto flex flex-col justify-end mb-20 h-full'>
+            <p className='font-inter font-medium text-[64px] text-white'>My Projects</p>
+            <p className='font-inter font-normal text-[40px] leading-[56px] text-[#A1A1A1]'>Where form meets function seamlessly</p>
+            <p className='font-inter font-normal text-[40px] leading-[56px] text-[#A1A1A1]'>to create captivating digital experiences.</p>
+          </div>
         </div>
-      </section> */}
+      </section>
+
+      <section className="flex flex-col h-auto pt-2">
+        <div className='w-full container mx-auto' id='projects'>
+          <div className='w-full flex flex-row justify-start gap-8'>
+            <ProjectCard
+              title='Fatch'
+              image={p1} date='Jan - Mar 2023'
+              description='Elevate smartwatch game with custom-designed smartwatch faces.'
+              role='Frontend Developer'
+            />
+
+            <ProjectCard
+              title='Fatch'
+              image={p1} date='Jan - Mar 2023'
+              description='Elevate smartwatch game with custom-designed smartwatch faces.'
+              role='Frontend Developer'
+            />
+
+            <ProjectCard
+              title='Fatch'
+              image={p1} date='Jan - Mar 2023'
+              description='Elevate smartwatch game with custom-designed smartwatch faces.'
+              role='Frontend Developer'
+            />
+
+          </div>
+        </div>
+      </section>
     </main>
   );
 };

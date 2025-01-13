@@ -23,7 +23,7 @@ const GradientBackground = () => {
               C 300 0, 900 600, 1200 500
             "
             stroke="url(#gradient)"
-            strokeWidth="3"
+            strokeWidth="1.5"
             fill="none"
           />
 
@@ -34,7 +34,7 @@ const GradientBackground = () => {
               C 300 20, 900 620, 1200 520
             "
             stroke="url(#gradient)"
-            strokeWidth="3"
+            strokeWidth="1.5"
             fill="none"
           />
 
@@ -45,7 +45,7 @@ const GradientBackground = () => {
               C 300 40, 900 640, 1200 540
             "
             stroke="url(#gradient)"
-            strokeWidth="3"
+            strokeWidth="1.5"
             fill="none"
           />
 
@@ -56,7 +56,7 @@ const GradientBackground = () => {
               C 300 60, 900 660, 1200 560
             "
             stroke="url(#gradient)"
-            strokeWidth="3"
+            strokeWidth="1.5"
             fill="none"
           />
 
@@ -67,7 +67,7 @@ const GradientBackground = () => {
               C 300 80, 900 680, 1200 580
             "
             stroke="url(#gradient)"
-            strokeWidth="3"
+            strokeWidth="1.5"
             fill="none"
           />
         </svg>

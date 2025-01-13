@@ -39,6 +39,9 @@ module.exports = {
       animation: {
         fadeInLeft: 'fadeInLeft 1s ease-out',
       },
+      backgroundImage: {
+        'bg-pattern': "url('./assets/images/background/Background Pattern.svg')",
+       }
 
   },
   plugins: [],
